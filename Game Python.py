@@ -1,5 +1,25 @@
 import pygame
 from random import randint
+import pyglet
+
+vidPath = 'intro.mp4'
+window = pyglet.window.Window()
+player = pyglet.media.Player()
+source = pyglet.media.StreamingSource()
+MediaLoad = pyglet.media.load(vidPath)
+
+player.queue(MediaLoad)
+player.play()
+
+
+@window.event
+def on_draw():
+    if player.source and player.source.video_format:
+        player.get_texture().blit(-1, 49)
+
+
+pyglet.app.run ()
+
 pygame.init()
 
 fundo = pygame.image.load('fundo.png')         #(carregando imagem de fundo: pista,agua e grama)
