@@ -98,14 +98,14 @@ while janela_aberta :
             x = 369 ; y = 480
         else: pontos += 1
 
-        if (pos_policia00y <= - 60):
-            pos_policia00y = randint(500, 500)
+        if (pos_policia00y <= 500):
+            pos_policia00y = randint(-300, -120)
 
-        if (pos_policia01y <= - 60):
-            pos_policia01y = randint(480, 600)
+        if (pos_policia01y <= 500 60):
+            pos_policia01y = randint(- 670, -470)
 
-        if (pos_ambulanciay <= -55):
-            pos_ambulanciay = randint(700, 900)
+        if (pos_ambulanciay <= 500):
+            pos_ambulanciay = randint(-790, -600)
 
         if (tempo < 31.25):
             tempo += 1
@@ -114,9 +114,9 @@ while janela_aberta :
             tempo_seg += 1
             texto = fonte.render(" Tempo: "+str(tempo_seg ), True, (255,255,255),(0,0,0))
             tempo =00
-            pos_policia00y -= vel_carros
-            pos_policia01y -= vel_carros - 2
-            pos_ambulanciay -= vel_carros - 10
+            pos_policia00y += vel_carros
+            pos_policia01y += vel_carros
+            pos_ambulanciay += vel_carros
 
                                       #retorna o carro da policia a posição inicial
         janela.blit(fundo, (0, 0))
