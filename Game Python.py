@@ -20,10 +20,10 @@ x = 369      #(posição do carro do jogador eixo x) limite 195x 527meio 369
 y = 480         #(posição do carro do jogador eixo y)  #pos_policia00_x = 526 equivale a pos_x = 526
 pos_policia00x = 515                                   #pos_policia00_y = 1200  equivale a pos y
 pos_policia00y = 600
-pos_policia01x = 100
+pos_policia01x = 223
 pos_policia01y = 500               #= pos policia = pos_x = posição da eixo X e Y do carro de policia 00)
 pos_ambulanciay = 2000
-pos_ambulanciax = 200
+pos_ambulanciax = 310
 
 pos_arvore_x1 = 30; pos_arvore_y1 = -300
 pos_arvore_x2 = 30; pos_arvore_y2 = -200
@@ -34,10 +34,10 @@ pos_arvore03dx = 830; pos_arvore03dy = -360
 
 pos_linha_x = 0           #posição da linha da pista no eixo x ( não varia)
 pos_linha_y = -600        #posição da linha da linha da pista no eixo y
-velocidade = 15
+velocidade = 20
 tempo = 0
 tempo_seg = 0
-vel_carros = 40
+vel_carros = 60
 vel_linha = 60
 pontos = 0
 fonte = pygame.font.SysFont('arial black',20)   # fonte do texto "tempo" ( arial black tamanho 20)
@@ -49,7 +49,7 @@ pygame.display.set_caption("Iniciando o Jogo ")
 
 janela_aberta = True
 while janela_aberta :
-        pygame.time.delay(8) # atualização de frames + 31.25 do relógio = 1000 milissegundos (1 segundo )
+        pygame.time.delay(5) # atualização de frames + 31.25 do relógio = 1000 milissegundos (1 segundo )
         for i in range(0, 3):
             if pos_arvore_y1 < 600 or pos_arvore01dy < 600:
                 pos_arvore_y1 = pos_arvore_y1 + 1; pos_arvore01dy = pos_arvore01dy +1
@@ -98,14 +98,14 @@ while janela_aberta :
             x = 369 ; y = 480
         else: pontos += 1
 
-        if (pos_policia00y <= - 60):
-            pos_policia00y = randint(500, 500)
+        if (pos_policia00y >  600):
+            pos_policia00y = randint(-360, -240)
 
-        if (pos_policia01y <= - 60):
-            pos_policia01y = randint(480, 600)
+        if (pos_policia01y >  600):
+            pos_policia01y = randint(-620, -500)
 
-        if (pos_ambulanciay <= -55):
-            pos_ambulanciay = randint(700, 900)
+        if (pos_ambulanciay > 600):
+            pos_ambulanciay = randint(-740, -620)
 
         if (tempo < 31.25):
             tempo += 1
@@ -114,9 +114,9 @@ while janela_aberta :
             tempo_seg += 1
             texto = fonte.render(" Tempo: "+str(tempo_seg ), True, (255,255,255),(0,0,0))
             tempo =00
-            pos_policia00y -= vel_carros
-            pos_policia01y -= vel_carros - 2
-            pos_ambulanciay -= vel_carros - 10
+            pos_policia00y += vel_carros
+            pos_policia01y += vel_carros
+            pos_ambulanciay += vel_carros
 
                                       #retorna o carro da policia a posição inicial
         janela.blit(fundo, (0, 0))
@@ -128,9 +128,9 @@ while janela_aberta :
         janela.blit(arvore02d, (pos_arvore02dx+4, pos_arvore02dy))
         janela.blit(arvore03d, (pos_arvore03dx+6, pos_arvore03dy))
         janela.blit(carro10, (x, y))
-        janela.blit(policia00, (pos_policia00x + 10, pos_policia00y))
-        janela.blit(policia01, (pos_policia01x + 140, pos_policia01y))
-        janela.blit(ambulancia, (pos_ambulanciax + 270, pos_ambulanciay))
+        janela.blit(policia00, (pos_policia00x , pos_policia00y))
+        janela.blit(policia01, (pos_policia01x , pos_policia01y+2))
+        janela.blit(ambulancia, (pos_ambulanciax , pos_ambulanciay+1))
 
 
 
